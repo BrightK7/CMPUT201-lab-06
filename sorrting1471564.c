@@ -23,13 +23,11 @@ int main(int argc, char const *argv[])
 
     }
     printf("\n");
-    
+    int compare_num;
     if(strcmp(argv[1],"-q") ==0){
-        quicksort(sort_num,0,num-1);
-
-
-
-    }	
+        quicksort(sort_num,0,num-1,&compare_num);
+    }
+    printf("compare num is %d",compare_num);	
     free(sort_num);
     return 0;
 }

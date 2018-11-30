@@ -1,28 +1,32 @@
 #include <stdio.h>
 #include "quicksort.h"
 
-void quicksort(int a[], int low, int high)
+void quicksort(int a[], int low, int high,int* compare_num)
 {
   int middle;
 
   if (low >= high) return;
-  middle = split(a, low, high);
-  quicksort(a, low, middle - 1);
-  quicksort(a, middle + 1, high);
+  middle = split(a, low, high,compare_num);
+  quicksort(a, low, middle - 1,compare_num);
+  quicksort(a, middle + 1, high,compare_num);
 }
 
-int split(int a[], int low, int high)
+int split(int a[], int low, int high,int* compare_num)
 {
   int part_element = a[low];
 
   for (;;) {
-    while (low < high && part_element <= a[high])
+    while (low < high && part_element <= a[high]){
       high--;
+      *compare_num++
+    }
     if (low >= high) break;
     a[low++] = a[high];
 
-    while (low < high && a[low] <= part_element)
-      low++;
+    while (low < high && a[low] <= part_element){
+      *compare_num++
+      high--
+    }
     if (low >= high) break;
     a[high--] = a[low];
   }
